@@ -1,0 +1,9 @@
+.css-b62m3t-container {
+  width: 180px !important;
+}
+
+@media screen and (max-width: 800px) {
+  .css-b62m3t-container {
+    width: 120px !important;
+  }
+}
