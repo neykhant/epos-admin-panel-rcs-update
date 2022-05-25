@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { Alert, Button, Col, Container, Row } from "reactstrap";
 import { getDate } from "utils/convertToDate";
 import logo from "assets/img/brand/clothing.jpg";
+import styles from "./SaleCreate.module.css";
 
 const PrintSale = ({ match }) => {
   const componentRef = useRef();
@@ -37,9 +38,19 @@ const PrintSale = ({ match }) => {
         Print Voucher
       </Button>
       <div style={{ margin: "40px" }} ref={componentRef}>
-        <Row>
+        <Row style={{ marginBottom: "10px" }}>
           <Col className="col-1">
-            <img src={logo} width={130} height={130} alt="logo" />
+            <img
+              src={logo}
+              width={130}
+              height={130}
+              alt="logo"
+              style={{
+                borderRadius: "80px",
+                textAlign: "center",
+                alignItems: "center"
+              }}
+            />
           </Col>
           <Col className="col-7">
             <p
@@ -50,7 +61,7 @@ const PrintSale = ({ match }) => {
                 marginBottom: "4px"
               }}
             >
-              ဦးဆန်းဝင်း + ‌ဒေါ်‌လှလှဝင်း
+              ဦးဆန်းဝင်း + ‌ဒေါ်‌လှလှဌေး
             </p>
             <p
               className="text-center"
@@ -86,7 +97,6 @@ const PrintSale = ({ match }) => {
             </Row>
           </Col>
         </Row>
-
         <Row>
           <Col className="col-2">
             <p style={{ fontWeight: "bold", fontSize: "22px" }}>လိပ်စာ</p>
@@ -108,40 +118,162 @@ const PrintSale = ({ match }) => {
           </Col>
         </Row>
 
-        <table className="mt-3 table">
-          <thead>
-            <tr>
-              <th style={{ fontSize: "20px" }}>စဥ်</th>
-              <th style={{ fontSize: "20px" }} className="col-4">
+        <table
+          className="mt-3 table table-bordered"
+          style={{
+            borderWidth: "2px",
+            borderColor: "black",
+            borderStyle: "solid"
+          }}
+        >
+          <thead
+            style={{
+              borderWidth: "2px",
+              borderColor: "black",
+              borderStyle: "solid"
+            }}
+          >
+            <tr
+              style={{
+                borderWidth: "2px",
+                borderColor: "black",
+                borderStyle: "solid"
+              }}
+            >
+              <th
+                style={{
+                  fontSize: "20px",
+                  // borderWidth: "2px",
+                  // borderColor: "black",
+                  // borderStyle: "solid",
+                  borderTop: "2px solid black",
+                  borderBottom: "2px solid black",
+                  borderLeft: "2px solid black",
+                  borderRight: "2px solid black"
+                }}
+              >
+                စဥ်
+              </th>
+              <th
+                style={{
+                  fontSize: "20px",
+                  borderWidth: "2px",
+                  borderColor: "black",
+                  borderStyle: "solid",
+                  borderCollapse: "separate"
+                  // border-collapse: separate;
+                }}
+                className="col-4"
+              >
                 {/* ပစ္စည်းအမည် */}
                 အမျိုးအမည်
               </th>
-              <th style={{ fontSize: "20px" }} className="col-2 text-right">
+              <th
+                style={{
+                  fontSize: "20px",
+                  borderWidth: "2px",
+                  borderColor: "black",
+                  borderStyle: "solid",
+                  borderCollapse: "collapse"
+                }}
+                className="col-2 text-right"
+              >
                 အရေအတွက်
               </th>
-              <th style={{ fontSize: "20px" }} className="col-2 text-right">
+              <th
+                style={{
+                  fontSize: "20px",
+                  borderWidth: "2px",
+                  borderColor: "black",
+                  borderStyle: "solid"
+                }}
+                className="col-2 text-right"
+              >
                 ဈေးနှုန်း
               </th>
-              <th style={{ fontSize: "20px" }} className="col-2 text-right">
+              <th
+                style={{
+                  fontSize: "20px",
+                  borderWidth: "2px",
+                  borderColor: "black",
+                  borderStyle: "solid"
+                }}
+                className="col-2 text-right"
+              >
                 စုစုပေါင်း
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody
+            style={{
+              borderWidth: "2px",
+              borderColor: "black",
+              borderStyle: "solid"
+            }}
+          >
             {sale?.single_sales?.map((sale, index) => {
               return (
-                <tr key={index}>
-                  <td style={{ fontSize: "20px" }}>{index + 1}</td>
-                  <td style={{ fontSize: "20px" }} className="col-4">
+                <tr
+                  key={index}
+                  style={{
+                    fontSize: "20px",
+                    borderWidth: "2px",
+                    borderColor: "black",
+                    borderStyle: "solid"
+                  }}
+                >
+                  <td
+                    style={{
+                      fontSize: "20px",
+                      borderWidth: "2px",
+                      borderColor: "black",
+                      borderStyle: "solid"
+                    }}
+                  >
+                    {index + 1}
+                  </td>
+                  <td
+                    style={{
+                      fontSize: "20px",
+                      borderWidth: "2px",
+                      borderColor: "black",
+                      borderStyle: "solid"
+                    }}
+                    className="col-4"
+                  >
                     {sale.stock.item.name}
                   </td>
-                  <td style={{ fontSize: "20px" }} className="col-2 text-right">
+                  <td
+                    style={{
+                      fontSize: "20px",
+                      borderWidth: "2px",
+                      borderColor: "black",
+                      borderStyle: "solid"
+                    }}
+                    className="col-2 text-right"
+                  >
                     {sale.quantity}
                   </td>
-                  <td style={{ fontSize: "20px" }} className="col-2 text-right">
+                  <td
+                    style={{
+                      fontSize: "20px",
+                      borderWidth: "2px",
+                      borderColor: "black",
+                      borderStyle: "solid"
+                    }}
+                    className="col-2 text-right"
+                  >
                     {sale.price}
                   </td>
-                  <td style={{ fontSize: "20px" }} className="col-2 text-right">
+                  <td
+                    style={{
+                      fontSize: "20px",
+                      borderWidth: "2px",
+                      borderColor: "black",
+                      borderStyle: "solid"
+                    }}
+                    className="col-2 text-right"
+                  >
                     {sale.subtotal}
                   </td>
                 </tr>
@@ -211,6 +343,7 @@ const PrintSale = ({ match }) => {
             </tr>
           </tfoot>
         </table>
+
         <div
           style={{
             position: "absolute",

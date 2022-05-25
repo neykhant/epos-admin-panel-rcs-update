@@ -28316,4 +28316,28 @@ button:focus,
   }
 }
 
+@media print {
+  table {
+      border: solid #000 !important;
+      border-width: 1px 0 0 1px !important;
+  }
+  th, td {
+      border: solid #000 !important;
+      border-width: 0 1px 1px 0 !important;
+  }
+}
+
+
+/* table.table-bordered{
+  border:1px solid blue!important;
+  margin-top:20px;
+}
+table.table-bordered > thead > tr > th{
+  border:1px solid blue!important;
+}
+table.table-bordered > tbody > tr > td{
+  border:1px solid blue!important;
+} */
+
+
 /*# sourceMappingURL=argon-dashboard-pro-react.css.map */
