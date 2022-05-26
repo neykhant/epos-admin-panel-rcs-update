@@ -127,25 +127,22 @@ const PrintSale = ({ match }) => {
           }}
         >
           <thead
-            style={{
-              borderWidth: "2px",
-              borderColor: "black",
-              borderStyle: "solid"
-            }}
+          // style={{
+          //   borderWidth: "2px",
+          //   borderColor: "black",
+          //   borderStyle: "solid"
+          // }}
           >
             <tr
-              style={{
-                borderWidth: "2px",
-                borderColor: "black",
-                borderStyle: "solid"
-              }}
+            // style={{
+            //   borderWidth: "2px",
+            //   borderColor: "black",
+            //   borderStyle: "solid"
+            // }}
             >
               <th
                 style={{
                   fontSize: "20px",
-                  // borderWidth: "2px",
-                  // borderColor: "black",
-                  // borderStyle: "solid",
                   borderTop: "2px solid black",
                   borderBottom: "2px solid black",
                   borderLeft: "2px solid black",
@@ -157,11 +154,14 @@ const PrintSale = ({ match }) => {
               <th
                 style={{
                   fontSize: "20px",
-                  borderWidth: "2px",
-                  borderColor: "black",
-                  borderStyle: "solid",
-                  borderCollapse: "separate"
-                  // border-collapse: separate;
+                  // borderWidth: "2px",
+                  // borderColor: "black",
+                  // borderStyle: "solid",
+                  // borderCollapse: "separate"
+                  borderTop: "2px solid black",
+                  borderBottom: "2px solid black",
+                  borderLeft: "2px solid black",
+                  borderRight: "2px solid black"
                 }}
                 className="col-4"
               >
@@ -182,10 +182,10 @@ const PrintSale = ({ match }) => {
               </th>
               <th
                 style={{
-                  fontSize: "20px",
-                  borderWidth: "2px",
-                  borderColor: "black",
-                  borderStyle: "solid"
+                  fontSize: "20px"
+                  // borderWidth: "2px",
+                  // borderColor: "black",
+                  // borderStyle: "solid"
                 }}
                 className="col-2 text-right"
               >
@@ -289,7 +289,16 @@ const PrintSale = ({ match }) => {
               >
                 စုစုပေါင်း
               </td>
-              <td style={{ fontSize: "20px" }} className="text-right">
+              <td
+                style={{
+                  fontSize: "20px",
+                  borderWidth: "2px",
+                  borderColor: "black",
+                  borderStyle: "solid",
+                  borderCollapse: "separate"
+                }}
+                className="text-right"
+              >
                 {sale.whole_total}
               </td>
             </tr>
@@ -301,7 +310,16 @@ const PrintSale = ({ match }) => {
               >
                 လျော့ဈေး ({sale.discount}) %
               </td>
-              <td style={{ fontSize: "20px" }} className="text-right">
+              <td
+                style={{
+                  fontSize: "20px",
+                  borderWidth: "2px",
+                  borderColor: "black",
+                  borderStyle: "solid",
+                  borderCollapse: "separate"
+                }}
+                className="text-right"
+              >
                 {sale.whole_total * (sale.discount / 100)}
               </td>
             </tr>
@@ -313,7 +331,16 @@ const PrintSale = ({ match }) => {
               >
                 ပေးချေရမည့်စုစုပေါင်း
               </td>
-              <td style={{ fontSize: "20px" }} className="text-right">
+              <td
+                style={{
+                  fontSize: "20px",
+                  borderWidth: "2px",
+                  borderColor: "black",
+                  borderStyle: "solid",
+                  borderCollapse: "separate"
+                }}
+                className="text-right"
+              >
                 {sale.final_total}
               </td>
             </tr>
@@ -325,7 +352,16 @@ const PrintSale = ({ match }) => {
               >
                 ပေးပြီးငွေ
               </td>
-              <td style={{ fontSize: "20px" }} className="text-right">
+              <td
+                style={{
+                  fontSize: "20px",
+                  borderWidth: "2px",
+                  borderColor: "black",
+                  borderStyle: "solid",
+                  borderCollapse: "separate"
+                }}
+                className="text-right"
+              >
                 {sale.paid}
               </td>
             </tr>
@@ -337,7 +373,16 @@ const PrintSale = ({ match }) => {
               >
                 ပေးရန်ကျန်ငွေ
               </td>
-              <td style={{ fontSize: "20px" }} className="text-right">
+              <td
+                style={{
+                  fontSize: "20px",
+                  borderWidth: "2px",
+                  borderColor: "black",
+                  borderStyle: "solid",
+                  borderCollapse: "separate"
+                }}
+                className="text-right"
+              >
                 {sale.credit}
               </td>
             </tr>
