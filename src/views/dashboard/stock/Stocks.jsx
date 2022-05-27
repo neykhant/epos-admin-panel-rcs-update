@@ -38,7 +38,7 @@ const pagination = paginationFactory({
         entries.
       </label>
     </div>
-  ),
+  )
 });
 
 const { SearchBar } = Search;
@@ -53,19 +53,19 @@ const Stocks = () => {
   const {
     response: stocks,
     error: stockError,
-    loading: stockLoading,
+    loading: stockLoading
   } = useQuery("get", "stocks");
   const {
     response: shops,
     error: shopError,
-    loading: shopLoading,
+    loading: shopLoading
   } = useQuery("get", "shops");
 
   React.useEffect(() => {
     const result = stocks.map((stock, index) => {
       return {
         ...stock,
-        key: index + 1,
+        key: index + 1
       };
     });
     setTransfromStocks(result);
@@ -92,9 +92,9 @@ const Stocks = () => {
       const response = await call("post", `stocks/${row.id}?_method=put`, {
         shop_id: Number(row.shop_id),
         item_id: row.item.id,
-        quantity: Number(stock),
+        quantity: Number(stock)
       });
-
+      // console.log(response);
       if (response.status === "success") {
         NotificationManager.success("Stock has been updated successfully!");
         document.getElementById(`quantity${row.id}`).value = "";
@@ -146,27 +146,27 @@ const Stocks = () => {
             {
               dataField: "key",
               text: "#",
-              sort: true,
+              sort: true
             },
             {
               dataField: "id",
               text: "ID",
-              sort: true,
+              sort: true
             },
             {
               dataField: "item.name",
               text: "Name",
-              sort: true,
+              sort: true
             },
             {
               dataField: "item.category.name",
               text: "Category",
-              sort: true,
+              sort: true
             },
             {
               dataField: "quantity",
               text: "Quantity",
-              sort: true,
+              sort: true
             },
             {
               dataField: "created_at",
@@ -174,7 +174,7 @@ const Stocks = () => {
               sort: true,
               formatter: (cell) => {
                 return getReadableDateDisplay(cell);
-              },
+              }
             },
             {
               dataField: "",
@@ -201,8 +201,8 @@ const Stocks = () => {
                     </Col>
                   </Row>
                 );
-              },
-            },
+              }
+            }
           ]}
           search
         >

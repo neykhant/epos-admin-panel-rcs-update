@@ -10,6 +10,8 @@ import { useHistory } from "react-router";
 import { getReadableDateDisplay } from "utils/convertToHumanReadableTime";
 import ExportButton from "utils/exportButton";
 import useQuery from "hooks/useQuery";
+import { NotificationManager } from "react-notifications";
+import { call } from "services/api";
 
 const pagination = paginationFactory({
   page: 1,
@@ -46,6 +48,7 @@ const Credit = () => {
   const [transformSales, setTransformSales] = React.useState(null);
   const [filterSales, setFilterSales] = React.useState(null);
   const [allCredit, setAllCredit] = React.useState(null);
+  // const [filterStocks, setFilterStocks] = React.useState([]);
 
   const history = useHistory();
 
@@ -101,10 +104,40 @@ const Credit = () => {
       setFilterSales(filterSalesByShopID);
     }
 
-    if (Number(shopID) === 1) {   
+    if (Number(shopID) === 1) {
       setFilterSales(allCredit);
     }
   };
+
+  const handleOnChange = async (row) => {
+    const credit = document.getElementById(`quantity${row.id}`).value;
+
+    const data = {
+      amount: credit,
+      sale_record_id: Number(row.id)
+    };
+
+    if (credit === "") {
+      NotificationManager.warning("Please enter credit!");
+    } else {
+      const response = await call("post", `credits`, data);
+      if (response.status === "success") {
+        NotificationManager.success("Credit has been updated successfully!");
+        document.getElementById(`quantity${row.id}`).value = "";
+        try {
+          const response = await call("get", "sales");
+          const result = response.data;
+          setFilterSales(result);
+          // setFilterStocks(result);
+        } catch (error) {
+          NotificationManager.error("Something was wrong!");
+        }
+      } else {
+        NotificationManager.error("Something was wrong!");
+      }
+    }
+  };
+
 
   if (saleLoading || shopLoading)
     return (
@@ -214,6 +247,33 @@ const Credit = () => {
                   Detail
                 </Button>
               )
+            },
+            {
+              dataField: "",
+              text: "Action",
+              formatter: (_, row) => {
+                return (
+                  <Row>
+                    <Col>
+                      <Input
+                        type="number"
+                        id={`quantity${row.id}`}
+                        style={{ width: "180px", height: "30px" }}
+                      />
+                    </Col>
+                    <Col>
+                      <Button
+                        color="success"
+                        type="button"
+                        size="sm"
+                        onClick={() => handleOnChange(row)}
+                      >
+                        Update
+                      </Button>
+                    </Col>
+                  </Row>
+                );
+              }
             }
             // {
             //   text: "Print",
