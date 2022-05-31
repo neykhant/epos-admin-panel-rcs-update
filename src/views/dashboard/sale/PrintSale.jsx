@@ -4,7 +4,8 @@ import { useReactToPrint } from "react-to-print";
 import { useRef } from "react";
 import { Alert, Button, Col, Container, Row } from "reactstrap";
 import { getDate } from "utils/convertToDate";
-import logo from "assets/img/brand/clothing.jpg";
+// import logo from "assets/img/brand/clothing.jpg";
+import logo from "assets/img/brand/h3.jpg";
 
 const PrintSale = ({ match }) => {
   const componentRef = useRef();
@@ -31,43 +32,78 @@ const PrintSale = ({ match }) => {
       </Alert>
     );
 
+  // console.log(sale);
+
   return (
     <Container fluid>
       <Button className="mt-3" size="sm" color="info" onClick={handlePrint}>
         Print Voucher
       </Button>
       <div style={{ margin: "40px" }} ref={componentRef}>
-        <Row style={{ marginBottom: "10px" }}>
+        <Row
+          style={{
+            justifyContent: "center",
+            marginBottom: "15px"
+          }}
+        >
           <Col className="col-1">
             <img
               src={logo}
-              width={130}
-              height={130}
+              width={150}
+              height={150}
               alt="logo"
-              style={{
-                borderRadius: "80px",
-                textAlign: "center",
-                alignItems: "center"
-              }}
+              style={
+                {
+                  // borderRadius: "80px",
+                  // textAlign: "center",
+                  // alignItems: "center"
+                }
+              }
             />
           </Col>
-          <Col className="col-7">
+          <Col className="col-1"></Col>
+          <Col className="col-10">
             <p
-              className="text-center"
+              // className="text-center"
               style={{
                 fontWeight: "bold",
-                fontSize: "35px",
-                marginBottom: "4px"
+                fontSize: "30px",
+                marginBottom: "1px",
+                marginLeft: "50px"
               }}
             >
               ဦးဆန်းဝင်း + ‌ဒေါ်‌လှလှဌေး
             </p>
             <p
-              className="text-center"
-              style={{ fontWeight: "bold", fontSize: "30px" }}
+              // className="text-center"
+              style={{
+                fontWeight: "bold",
+                fontSize: "28px",
+                marginBottom: "1px",
+                marginLeft: "50px"
+              }}
             >
-              {/* {sale.shop.name + "Sweety Bra & Underwear အမျိုးမျိုး"} */}
               {sale.shop.name}
+            </p>
+            <p
+              style={{
+                fontWeight: "bold",
+                fontSize: "26px",
+                marginBottom: "1px",
+                marginLeft: "50px"
+              }}
+            >
+              {sale.shop.address}
+            </p>
+            <p
+              style={{
+                fontWeight: "bold",
+                fontSize: "22px",
+                marginBottom: "1px",
+                marginLeft: "50px"
+              }}
+            >
+              {sale.shop.phone_no_one}, {sale.shop.phone_no_two}
             </p>
           </Col>
           {/* <Col className="col-8">
@@ -75,7 +111,7 @@ const PrintSale = ({ match }) => {
               {sale.shop.name}
             </p>
           </Col> */}
-          <Col className="col-4">
+          {/* <Col className="col-2">
             <Row>
               <Col style={{ fontSize: "20px" }} className="text-right">
                 ဘောင်ချာနံပါတ်:{" "}
@@ -94,26 +130,43 @@ const PrintSale = ({ match }) => {
               </Col>
               <Col style={{ fontSize: "20px" }}>{sale.customer_name}</Col>
             </Row>
+          </Col> */}
+        </Row>
+        <Row style={{ marginBottom: "-10px" }}>
+          <Col className="col-1">
+            <span
+              style={{
+                fontSize: "20px"
+                // marginBottom: "5px"
+              }}
+            >
+              အမည်:
+            </span>
+          </Col>
+          <Col className="col-2">
+            <p style={{ fontSize: "20px" }}>{sale.customer_name}</p>
+          </Col>
+          <Col className="col-4"></Col>
+          <Col className="col-2">
+            <p style={{ fontSize: "20px" }}>ဘောင်ချာနံပါတ်:</p>
+          </Col>
+          <Col className="col-3">
+            <p style={{ fontSize: "20px" }}>{sale.id}</p>
           </Col>
         </Row>
         <Row>
+          <Col className="col-1">
+            <p style={{ fontSize: "20px" }}>ဖုန်း</p>
+          </Col>
           <Col className="col-2">
-            <p style={{ fontWeight: "bold", fontSize: "22px" }}>လိပ်စာ</p>
+            <p style={{ fontSize: "20px" }}>{sale.pay_way}</p>
           </Col>
-          <Col className="col-10">
-            <p style={{ fontWeight: "bold", fontSize: "22px" }}>
-              {sale.shop.address}
-            </p>
-          </Col>
-        </Row>
-        <Row>
+          <Col className="col-4"></Col>
           <Col className="col-2">
-            <p style={{ fontWeight: "bold", fontSize: "22px" }}>ဖုန်း</p>
+            <p style={{ fontSize: "20px" }}>ရက်စွဲး</p>
           </Col>
-          <Col className="col-10">
-            <p style={{ fontWeight: "bold", fontSize: "22px" }}>
-              {sale.shop.phone_no_one}, {sale.shop.phone_no_two}
-            </p>
+          <Col className="col-3">
+            <p style={{ fontSize: "20px" }}>{getDate(sale.created_at)}</p>
           </Col>
         </Row>
 
