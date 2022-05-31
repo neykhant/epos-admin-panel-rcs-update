@@ -12,7 +12,7 @@ import {
   CardBody,
   Row,
   Col,
-  Alert,
+  Alert
 } from "reactstrap";
 import { NotificationManager } from "react-notifications";
 import { call } from "services/api";
@@ -31,32 +31,37 @@ const SaleCreate = ({ match }) => {
   const [paid, setPaid] = useState(0);
   const [customer, setCustomer] = useState("-");
   const [loading, setLoading] = useState(false);
+
+  const [manual, setManual] = useState(true);
+  const [dataBarCode, setDataBarCode] = useState(null);
+
   const { shopid } = match.params;
+  const [barcodeInputValue, updateBarcodeInputValue] = useState("");
 
   const history = useHistory();
 
   const {
     response: categories,
     error: categoryError,
-    loading: categoryLoading,
+    loading: categoryLoading
   } = useQuery("get", "categories");
 
   const {
     response: stocks,
     error: stockError,
-    loading: stockLoading,
+    loading: stockLoading
   } = useQuery("get", `stocks/${shopid}`);
 
   const {
     response: customers,
     error: customerError,
-    loading: customerLoading,
+    loading: customerLoading
   } = useQuery("get", `customers/${shopid}`);
 
   const {
     response: shop,
     error: shopError,
-    loading: shopLoading,
+    loading: shopLoading
   } = useQuery("get", `shops/${shopid}`);
 
   useEffect(() => {
@@ -78,8 +83,12 @@ const SaleCreate = ({ match }) => {
     if (option === null) {
       setPrice(0);
       setStock(null);
+    } else if (dataBarCode) {
+      // setStock(dataBarCode);
+      // setPrice(Number(dataBarCode.item.sale_price));
     } else {
       const findStock = stocks.find((stock) => stock.id === option.value);
+      console.log("find", findStock);
       setStock(findStock);
       setPrice(Number(findStock.item.sale_price));
     }
@@ -89,6 +98,30 @@ const SaleCreate = ({ match }) => {
     setQuantity(enterQuantity);
     setSubtotal(Number(enterQuantity) * Number(price));
   };
+
+  // for barcode
+  const onChangeBarcode = (event) => {
+    updateBarcodeInputValue(event.target.value);
+  };
+
+  // console.log("stocksssss", stock);
+  // console.log("price", price);
+
+  const onKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      updateBarcodeInputValue(e.target.value);
+      const item = filterStocks.find((i) => i?.item?.code === e.target.value);
+      if (item) {
+        setDataBarCode(item);
+        setStock(item);
+        setPrice(Number(item.item.sale_price));
+      }
+    }
+  };
+
+  //end for barcode
+  // console.log("dataBarCode", dataBarCode);
+  // console.log("filter Stocks", filterStocks);
 
   const handleAddRow = () => {
     const index = items.findIndex((item) => item.stock_id === stock.id);
@@ -101,7 +134,7 @@ const SaleCreate = ({ match }) => {
               stock_id: stock.id,
               price: Number(price),
               quantity: Number(quantity),
-              subtotal,
+              subtotal
             };
 
             setItems((prev) => [...prev, item]);
@@ -134,6 +167,10 @@ const SaleCreate = ({ match }) => {
     } else {
       setCustomer(customer);
     }
+  };
+
+  const handleSaleBarcode = () => {
+    setManual(!manual);
   };
 
   if (categoryLoading || stockLoading || customerLoading || shopLoading)
@@ -199,7 +236,7 @@ const SaleCreate = ({ match }) => {
         paid: Number(paid),
         discount: Number(discount),
         shop_id: Number(shopid),
-        single_sales: items,
+        single_sales: items
       };
 
       setLoading((prev) => !prev);
@@ -244,117 +281,272 @@ const SaleCreate = ({ match }) => {
           </Row>
         </CardHeader>
         <CardBody>
-          <Form>
-            <Row>
-              <Col xs={12} sm={4}>
-                <FormGroup>
-                  <div className="custom-control-inline mt-1">
-                    <label htmlFor="categories" className="mr-1 mt-1">
-                      Categories:
-                    </label>
-                    <Select
-                      id="categories"
-                      placeholder="Select Category"
-                      className={styles["css-b62m3t-container"]}
-                      options={categories.map((data) => ({
-                        label: data.name,
-                        value: data.id,
-                      }))}
-                      isClearable={true}
-                      isSearchable={true}
-                      onChange={(option) => handleCategory(option)}
-                    />
-                  </div>
-                </FormGroup>
-              </Col>
-              <Col xs={12} sm={4}>
-                <FormGroup>
-                  <div className="custom-control-inline mt-1">
-                    <label htmlFor="items" className="mr-1 mt-1">
-                      Items:
-                    </label>
+          <Button style={{ marginBottom: "20px" }} onClick={handleSaleBarcode}>
+            {manual ? "Sale With BarCode" : "Not Sale BarCode"}
+          </Button>
 
-                    <Select
-                      id="items"
-                      placeholder="Select Item"
-                      className={styles["css-b62m3t-container"]}
-                      options={filterStocks.map((data) => ({
-                        label: `${data.item.name}(${data.quantity})`,
-                        value: data.id,
-                      }))}
-                      isClearable={true}
-                      isSearchable={true}
-                      onChange={(option) => handleStock(option)}
-                    />
-                  </div>
-                </FormGroup>
-              </Col>
-              <Col xs={12} sm={4}>
-                <FormGroup>
-                  <div className="custom-control-inline mt-1">
-                    <label className="mr-1 mt-1" htmlFor="price">
-                      Price:
-                    </label>
-                    <Input
-                      id="price"
-                      placeholder="Enter price"
-                      type="number"
-                      className="form-control-sm"
-                      value={price}
-                      onChange={(event) => setPrice(event.target.value)}
-                    />
-                  </div>
-                </FormGroup>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12} sm={4}>
-                <FormGroup>
-                  <div className="custom-control-inline mt-1">
-                    <label className="mr-1 mt-1" htmlFor="quantity">
-                      Quantity:
-                    </label>
-                    <Input
-                      id="quantity"
-                      placeholder="Enter quantity"
-                      type="number"
-                      className="form-control-sm"
-                      value={quantity}
-                      onChange={(event) => handleSubtotal(event.target.value)}
-                    />
-                  </div>
-                </FormGroup>
-              </Col>
-              <Col xs={12} sm={4}>
-                <FormGroup>
-                  <div className="custom-control-inline mt-1">
-                    <label className="mr-1 mt-1" htmlFor="subtotal">
-                      Subtotal:
-                    </label>
-                    <Input
-                      id="subtotal"
-                      placeholder="Enter subtotal"
-                      type="number"
-                      className="form-control-sm"
-                      value={subtotal}
-                      onChange={(event) => setSubtotal(event.target.value)}
-                    />
-                  </div>
-                </FormGroup>
-              </Col>
-              <Col xs={12} sm={4}>
-                <Button
-                  color="success"
-                  type="button"
-                  size="sm"
-                  onClick={handleAddRow}
-                >
-                  Add Row
-                </Button>
-              </Col>
-            </Row>
-          </Form>
+          {manual ? (
+            <Form id="manual">
+              <Row>
+                <Col xs={12} sm={4}>
+                  <FormGroup>
+                    <div className="custom-control-inline mt-1">
+                      <label htmlFor="categories" className="mr-1 mt-1">
+                        Categories:
+                      </label>
+                      <Select
+                        id="categories"
+                        placeholder="Select Category"
+                        className={styles["css-b62m3t-container"]}
+                        options={categories.map((data) => ({
+                          label: data.name,
+                          value: data.id
+                        }))}
+                        isClearable={true}
+                        isSearchable={true}
+                        onChange={(option) => handleCategory(option)}
+                      />
+                    </div>
+                  </FormGroup>
+                </Col>
+                <Col xs={12} sm={4}>
+                  <FormGroup>
+                    <div className="custom-control-inline mt-1">
+                      <label htmlFor="items" className="mr-1 mt-1">
+                        Items:
+                      </label>
+
+                      <Select
+                        id="items"
+                        placeholder="Select Item"
+                        className={styles["css-b62m3t-container"]}
+                        options={filterStocks.map((data) => ({
+                          label: `${data.item.name}(${data.quantity})`,
+                          value: data.id
+                        }))}
+                        isClearable={true}
+                        isSearchable={true}
+                        onChange={(option) => handleStock(option)}
+                      />
+                    </div>
+                  </FormGroup>
+                </Col>
+                <Col xs={12} sm={4}>
+                  <FormGroup>
+                    <div className="custom-control-inline mt-1">
+                      <label className="mr-1 mt-1" htmlFor="price">
+                        Price:
+                      </label>
+                      <Input
+                        id="price"
+                        placeholder="Enter price"
+                        type="number"
+                        className="form-control-sm"
+                        value={price}
+                        onChange={(event) => setPrice(event.target.value)}
+                      />
+                    </div>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12} sm={4}>
+                  <FormGroup>
+                    <div className="custom-control-inline mt-1">
+                      <label className="mr-1 mt-1" htmlFor="quantity">
+                        Quantity:
+                      </label>
+                      <Input
+                        id="quantity"
+                        placeholder="Enter quantity"
+                        type="number"
+                        className="form-control-sm"
+                        value={quantity}
+                        onChange={(event) => handleSubtotal(event.target.value)}
+                      />
+                    </div>
+                  </FormGroup>
+                </Col>
+                <Col xs={12} sm={4}>
+                  <FormGroup>
+                    <div className="custom-control-inline mt-1">
+                      <label className="mr-1 mt-1" htmlFor="subtotal">
+                        Subtotal:
+                      </label>
+                      <Input
+                        id="subtotal"
+                        placeholder="Enter subtotal"
+                        type="number"
+                        className="form-control-sm"
+                        value={subtotal}
+                        onChange={(event) => setSubtotal(event.target.value)}
+                      />
+                    </div>
+                  </FormGroup>
+                </Col>
+                <Col xs={12} sm={4}>
+                  <Button
+                    color="success"
+                    type="button"
+                    size="sm"
+                    onClick={handleAddRow}
+                  >
+                    Add Row
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          ) : (
+            <Form id="barcode">
+              <Row>
+                {/* <Col xs={12} sm={4}>
+                  <FormGroup>
+                    <div className="custom-control-inline mt-1">
+                      <label htmlFor="categories" className="mr-1 mt-1">
+                        Categories:
+                      </label>
+                      <Select
+                        id="categories"
+                        placeholder="Select Category"
+                        className={styles["css-b62m3t-container"]}
+                        options={categories.map((data) => ({
+                          label: data.name,
+                          value: data.id
+                        }))}
+                        isClearable={true}
+                        isSearchable={true}
+                        onChange={(option) => handleCategory(option)}
+                      />
+                    </div>
+                  </FormGroup>
+                </Col> */}
+                <Col xs={12} sm={4}>
+                  <FormGroup>
+                    <div className="custom-control-inline mt-1">
+                      <label htmlFor="items" className="mr-1 mt-1">
+                        Items Name:
+                      </label>
+                      <label htmlFor="items" className="mr-1 mt-1">
+                        {dataBarCode?.item?.name
+                          ? dataBarCode?.item?.name
+                          : "-"}
+                      </label>
+                      {/* <Input
+                        id="items"
+                        type="text"
+                        placeholder="Enter item's name"
+                        className="form-control-sm"
+                        value={dataBarCode?.item?.name}
+                        onChange={(event) => setCustomer(event.target.value)}
+                      /> */}
+
+                      {/* <Select
+                        id="items"
+                        placeholder="Select Item"
+                        className={styles["css-b62m3t-container"]}
+                        options={filterStocks.map((data) => ({
+                          label: `${data.item.name}(${data.quantity})`,
+                          value: data.id
+                        }))}
+                        isClearable={true}
+                        isSearchable={true}
+                        onChange={(option) => handleStock(option)}
+                      /> */}
+                    </div>
+                  </FormGroup>
+                </Col>
+                <Col xs={12} sm={4}>
+                  <FormGroup>
+                    <div className="custom-control-inline mt-1">
+                      <label className="mr-1 mt-1" htmlFor="price">
+                        Price:
+                      </label>
+
+                      <Input
+                        id="price"
+                        placeholder="Enter price"
+                        type="number"
+                        className="form-control-sm"
+                        value={price}
+                        onChange={(event) => setPrice(event.target.value)}
+                      />
+                    </div>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12} sm={4}>
+                  <FormGroup>
+                    <div className="custom-control-inline mt-1">
+                      <label className="mr-1 mt-1" htmlFor="quantity">
+                        Quantity:
+                      </label>
+                      <Input
+                        id="quantity"
+                        placeholder="Enter quantity"
+                        type="number"
+                        className="form-control-sm"
+                        value={quantity}
+                        onChange={(event) => handleSubtotal(event.target.value)}
+                      />
+                    </div>
+                  </FormGroup>
+                </Col>
+                <Col xs={12} sm={4}>
+                  <FormGroup>
+                    <div className="custom-control-inline mt-1">
+                      <label className="mr-1 mt-1" htmlFor="subtotal">
+                        Subtotal:
+                      </label>
+                      <Input
+                        id="subtotal"
+                        placeholder="Enter subtotal"
+                        type="number"
+                        className="form-control-sm"
+                        value={subtotal}
+                        onChange={(event) => setSubtotal(event.target.value)}
+                      />
+                    </div>
+                  </FormGroup>
+                </Col>
+                <Col xs={12} sm={4}>
+                  <Button
+                    color="success"
+                    type="button"
+                    size="sm"
+                    onClick={handleAddRow}
+                  >
+                    Add Row
+                  </Button>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12} sm={4}>
+                  <FormGroup>
+                    <div className="custom-control-inline mt-1">
+                      <label className="mr-1 mt-1" htmlFor="quantity">
+                        Search:
+                      </label>
+                      <Input
+                        autoFocus={true}
+                        placeholder="Start Scanning.."
+                        type="text"
+                        className="form-control-sm SearchInput"
+                        id="SearchbyScanning"
+                        value={barcodeInputValue}
+                        onChange={onChangeBarcode}
+                        onKeyDown={onKeyDown}
+                        // value={quantity}
+                        // onChange={(event) => handleSubtotal(event.target.value)}
+                      />
+                    </div>
+                  </FormGroup>
+                </Col>
+              </Row>
+            </Form>
+          )}
         </CardBody>
+
         <Container fluid>
           <Row className="mb-3">
             <Col xs={12} sm={4}>
