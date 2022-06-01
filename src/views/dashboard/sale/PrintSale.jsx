@@ -98,7 +98,7 @@ const PrintSale = ({ match }) => {
             <p
               style={{
                 fontWeight: "bold",
-                fontSize: "22px",
+                fontSize: "24px",
                 marginBottom: "1px",
                 marginLeft: "50px"
               }}
@@ -136,7 +136,7 @@ const PrintSale = ({ match }) => {
           <Col className="col-1">
             <span
               style={{
-                fontSize: "20px"
+                fontSize: "23px"
                 // marginBottom: "5px"
               }}
             >
@@ -144,29 +144,29 @@ const PrintSale = ({ match }) => {
             </span>
           </Col>
           <Col className="col-2">
-            <p style={{ fontSize: "20px" }}>{sale.customer_name}</p>
+            <p style={{ fontSize: "23px" }}>{sale.customer_name}</p>
           </Col>
-          <Col className="col-4"></Col>
-          <Col className="col-2">
-            <p style={{ fontSize: "20px" }}>ဘောင်ချာနံပါတ်:</p>
-          </Col>
+          <Col className="col-3"></Col>
           <Col className="col-3">
-            <p style={{ fontSize: "20px" }}>{sale.id}</p>
+            <p style={{ fontSize: "23px" }}>ဘောင်ချာနံပါတ်:</p>
+          </Col>
+          <Col className="col-2">
+            <p style={{ fontSize: "23px" }}>{sale.id}</p>
           </Col>
         </Row>
         <Row>
           <Col className="col-1">
-            <p style={{ fontSize: "20px" }}>ဖုန်း</p>
+            <p style={{ fontSize: "23px" }}>ဖုန်း</p>
           </Col>
           <Col className="col-2">
-            <p style={{ fontSize: "20px" }}>{sale.pay_way}</p>
+            <p style={{ fontSize: "23px" }}>{sale.pay_way}</p>
           </Col>
-          <Col className="col-4"></Col>
-          <Col className="col-2">
-            <p style={{ fontSize: "20px" }}>ရက်စွဲး</p>
+          <Col className="col-3"></Col>
+          <Col className="col-3">
+            <p style={{ fontSize: "23px" }}>ရက်စွဲး</p>
           </Col>
           <Col className="col-3">
-            <p style={{ fontSize: "20px" }}>{getDate(sale.created_at)}</p>
+            <p style={{ fontSize: "22px" }}>{getDate(sale.created_at)}</p>
           </Col>
         </Row>
 
@@ -176,7 +176,7 @@ const PrintSale = ({ match }) => {
             // borderWidth: "2px",
             // borderColor: "black",
             // borderStyle: "solid"
-            borderTop: "2px solid #526296",
+            borderTop: "2px solid #526296"
             // borderBottom: "2px solid #526296"
           }}
         >
@@ -198,7 +198,7 @@ const PrintSale = ({ match }) => {
             >
               <th
                 style={{
-                  fontSize: "20px",
+                  fontSize: "23px",
                   // borderTop: "2px solid black",
                   // borderBottom: "2px solid black"
                   // borderLeft: "2px solid black",
@@ -211,7 +211,7 @@ const PrintSale = ({ match }) => {
               </th>
               <th
                 style={{
-                  fontSize: "20px",
+                  fontSize: "23px",
                   // borderWidth: "2px",
                   // borderColor: "black",
                   // borderStyle: "solid",
@@ -229,7 +229,7 @@ const PrintSale = ({ match }) => {
               </th>
               <th
                 style={{
-                  fontSize: "20px"
+                  fontSize: "23px"
                   // borderWidth: "2px",
                   // borderColor: "black",
                   // borderStyle: "solid",
@@ -243,7 +243,7 @@ const PrintSale = ({ match }) => {
               </th>
               <th
                 style={{
-                  fontSize: "20px"
+                  fontSize: "23px"
                   // borderWidth: "2px",
                   // borderColor: "black",
                   // borderStyle: "solid"
@@ -256,7 +256,7 @@ const PrintSale = ({ match }) => {
               </th>
               <th
                 style={{
-                  fontSize: "20px"
+                  fontSize: "23px"
                   // borderWidth: "2px",
                   // borderColor: "black",
                   // borderStyle: "solid"
@@ -283,7 +283,7 @@ const PrintSale = ({ match }) => {
                 <tr
                   key={index}
                   style={{
-                    fontSize: "20px"
+                    fontSize: "23px"
                     // borderWidth: "2px",
                     // borderColor: "black",
                     // borderStyle: "solid"
@@ -291,7 +291,7 @@ const PrintSale = ({ match }) => {
                 >
                   <td
                     style={{
-                      fontSize: "20px"
+                      fontSize: "23px"
                       // borderWidth: "2px",
                       // borderColor: "black",
                       // borderStyle: "solid"
@@ -301,7 +301,7 @@ const PrintSale = ({ match }) => {
                   </td>
                   <td
                     style={{
-                      fontSize: "20px"
+                      fontSize: "23px"
                       // borderWidth: "2px",
                       // borderColor: "black",
                       // borderStyle: "solid"
@@ -312,7 +312,7 @@ const PrintSale = ({ match }) => {
                   </td>
                   <td
                     style={{
-                      fontSize: "20px"
+                      fontSize: "23px"
                       // borderWidth: "2px",
                       // borderColor: "black",
                       // borderStyle: "solid"
@@ -323,7 +323,7 @@ const PrintSale = ({ match }) => {
                   </td>
                   <td
                     style={{
-                      fontSize: "20px"
+                      fontSize: "23px"
                       // borderWidth: "2px",
                       // borderColor: "black",
                       // borderStyle: "solid"
@@ -334,7 +334,7 @@ const PrintSale = ({ match }) => {
                   </td>
                   <td
                     style={{
-                      fontSize: "20px"
+                      fontSize: "23px"
                       // borderWidth: "2px",
                       // borderColor: "black",
                       // borderStyle: "solid"
@@ -350,7 +350,7 @@ const PrintSale = ({ match }) => {
           <tfoot>
             <tr>
               <td
-                style={{ fontSize: "20px" }}
+                style={{ fontSize: "23px" }}
                 colSpan="4"
                 className="text-right"
               >
@@ -358,7 +358,7 @@ const PrintSale = ({ match }) => {
               </td>
               <td
                 style={{
-                  fontSize: "20px"
+                  fontSize: "23px"
                   // borderWidth: "2px",
                   // borderColor: "black",
                   // borderStyle: "solid",
@@ -371,7 +371,7 @@ const PrintSale = ({ match }) => {
             </tr>
             <tr>
               <td
-                style={{ fontSize: "20px" }}
+                style={{ fontSize: "23px" }}
                 colSpan="4"
                 className="text-right"
               >
@@ -379,7 +379,7 @@ const PrintSale = ({ match }) => {
               </td>
               <td
                 style={{
-                  fontSize: "20px"
+                  fontSize: "23px"
                   // borderWidth: "2px",
                   // borderColor: "black",
                   // borderStyle: "solid",
@@ -392,7 +392,7 @@ const PrintSale = ({ match }) => {
             </tr>
             <tr>
               <td
-                style={{ fontSize: "20px" }}
+                style={{ fontSize: "23px" }}
                 colSpan="4"
                 className="text-right"
               >
@@ -400,7 +400,7 @@ const PrintSale = ({ match }) => {
               </td>
               <td
                 style={{
-                  fontSize: "20px"
+                  fontSize: "23px"
                   // borderWidth: "2px",
                   // borderColor: "black",
                   // borderStyle: "solid",
@@ -413,7 +413,7 @@ const PrintSale = ({ match }) => {
             </tr>
             <tr>
               <td
-                style={{ fontSize: "20px" }}
+                style={{ fontSize: "23px" }}
                 colSpan="4"
                 className="text-right"
               >
@@ -421,7 +421,7 @@ const PrintSale = ({ match }) => {
               </td>
               <td
                 style={{
-                  fontSize: "20px"
+                  fontSize: "23px"
                   // borderWidth: "2px",
                   // borderColor: "black",
                   // borderStyle: "solid",
@@ -434,7 +434,7 @@ const PrintSale = ({ match }) => {
             </tr>
             <tr>
               <td
-                style={{ fontSize: "20px" }}
+                style={{ fontSize: "23px" }}
                 colSpan="4"
                 className="text-right"
               >
@@ -442,7 +442,7 @@ const PrintSale = ({ match }) => {
               </td>
               <td
                 style={{
-                  fontSize: "20px"
+                  fontSize: "23px"
                   // borderWidth: "2px",
                   // borderColor: "black",
                   // borderStyle: "solid",
