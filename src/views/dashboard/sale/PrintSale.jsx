@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { Alert, Button, Col, Container, Row } from "reactstrap";
 import { getDate } from "utils/convertToDate";
 // import logo from "assets/img/brand/clothing.jpg";
-import logo from "assets/img/brand/h3.jpg";
+import logo from "assets/img/brand/h5.jpg";
 
 const PrintSale = ({ match }) => {
   const componentRef = useRef();
