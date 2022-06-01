@@ -88,7 +88,7 @@ const SaleCreate = ({ match }) => {
       // setPrice(Number(dataBarCode.item.sale_price));
     } else {
       const findStock = stocks.find((stock) => stock.id === option.value);
-      console.log("find", findStock);
+      // console.log("find", findStock);
       setStock(findStock);
       setPrice(Number(findStock.item.sale_price));
     }

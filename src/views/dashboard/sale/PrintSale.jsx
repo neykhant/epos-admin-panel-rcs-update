@@ -49,8 +49,8 @@ const PrintSale = ({ match }) => {
           <Col className="col-1">
             <img
               src={logo}
-              width={150}
-              height={150}
+              width={200}
+              height={200}
               alt="logo"
               style={
                 {
@@ -172,18 +172,20 @@ const PrintSale = ({ match }) => {
 
         <table
           className="mt-3 table table-bordered"
-          style={{
-            borderWidth: "2px",
-            borderColor: "black",
-            borderStyle: "solid"
-          }}
-        >
-          <thead
           // style={{
           //   borderWidth: "2px",
           //   borderColor: "black",
           //   borderStyle: "solid"
           // }}
+        >
+          <thead
+            style={{
+              // borderWidth: "2px",
+              // borderColor: "black",
+              // borderStyle: "solid"
+              borderTop: "2px solid black",
+              borderBottom: "2px solid black"
+            }}
           >
             <tr
             // style={{
@@ -195,10 +197,12 @@ const PrintSale = ({ match }) => {
               <th
                 style={{
                   fontSize: "20px",
-                  borderTop: "2px solid black",
-                  borderBottom: "2px solid black",
-                  borderLeft: "2px solid black",
-                  borderRight: "2px solid black"
+                  // borderTop: "2px solid black",
+                  // borderBottom: "2px solid black"
+                  // borderLeft: "2px solid black",
+                  // borderRight: "2px solid black"
+                  // borderTop: "1.2px solid black",
+                  borderBottom: "2px solid black"
                 }}
               >
                 စဥ်
@@ -210,10 +214,11 @@ const PrintSale = ({ match }) => {
                   // borderColor: "black",
                   // borderStyle: "solid",
                   // borderCollapse: "separate"
-                  borderTop: "2px solid black",
-                  borderBottom: "2px solid black",
-                  borderLeft: "2px solid black",
-                  borderRight: "2px solid black"
+                  // borderTop: "2px solid black",
+                  // borderBottom: "2px solid black"
+                  // borderLeft: "2px solid black",
+                  // borderRight: "2px solid black"
+                  borderBottom: "2px solid black"
                 }}
                 className="col-4"
               >
@@ -222,11 +227,13 @@ const PrintSale = ({ match }) => {
               </th>
               <th
                 style={{
-                  fontSize: "20px",
-                  borderWidth: "2px",
-                  borderColor: "black",
-                  borderStyle: "solid",
-                  borderCollapse: "collapse"
+                  fontSize: "20px"
+                  // borderWidth: "2px",
+                  // borderColor: "black",
+                  // borderStyle: "solid",
+                  // borderCollapse: "collapse"
+                  // borderTop: "2px solid black",
+                  // borderBottom: "2px solid black"
                 }}
                 className="col-2 text-right"
               >
@@ -238,6 +245,8 @@ const PrintSale = ({ match }) => {
                   // borderWidth: "2px",
                   // borderColor: "black",
                   // borderStyle: "solid"
+                  // borderTop: "2px solid black",
+                  // borderBottom: "2px solid black"
                 }}
                 className="col-2 text-right"
               >
@@ -245,10 +254,12 @@ const PrintSale = ({ match }) => {
               </th>
               <th
                 style={{
-                  fontSize: "20px",
-                  borderWidth: "2px",
-                  borderColor: "black",
-                  borderStyle: "solid"
+                  fontSize: "20px"
+                  // borderWidth: "2px",
+                  // borderColor: "black",
+                  // borderStyle: "solid"
+                  // borderTop: "2px solid black",
+                  // borderBottom: "2px solid black"
                 }}
                 className="col-2 text-right"
               >
@@ -258,9 +269,11 @@ const PrintSale = ({ match }) => {
           </thead>
           <tbody
             style={{
-              borderWidth: "2px",
-              borderColor: "black",
-              borderStyle: "solid"
+              // borderWidth: "2px",
+              // borderColor: "black",
+              // borderStyle: "solid"
+              borderTop: "2px solid black",
+              borderBottom: "2px solid black"
             }}
           >
             {sale?.single_sales?.map((sale, index) => {
@@ -268,28 +281,28 @@ const PrintSale = ({ match }) => {
                 <tr
                   key={index}
                   style={{
-                    fontSize: "20px",
-                    borderWidth: "2px",
-                    borderColor: "black",
-                    borderStyle: "solid"
+                    fontSize: "20px"
+                    // borderWidth: "2px",
+                    // borderColor: "black",
+                    // borderStyle: "solid"
                   }}
                 >
                   <td
                     style={{
-                      fontSize: "20px",
-                      borderWidth: "2px",
-                      borderColor: "black",
-                      borderStyle: "solid"
+                      fontSize: "20px"
+                      // borderWidth: "2px",
+                      // borderColor: "black",
+                      // borderStyle: "solid"
                     }}
                   >
                     {index + 1}
                   </td>
                   <td
                     style={{
-                      fontSize: "20px",
-                      borderWidth: "2px",
-                      borderColor: "black",
-                      borderStyle: "solid"
+                      fontSize: "20px"
+                      // borderWidth: "2px",
+                      // borderColor: "black",
+                      // borderStyle: "solid"
                     }}
                     className="col-4"
                   >
@@ -297,10 +310,10 @@ const PrintSale = ({ match }) => {
                   </td>
                   <td
                     style={{
-                      fontSize: "20px",
-                      borderWidth: "2px",
-                      borderColor: "black",
-                      borderStyle: "solid"
+                      fontSize: "20px"
+                      // borderWidth: "2px",
+                      // borderColor: "black",
+                      // borderStyle: "solid"
                     }}
                     className="col-2 text-right"
                   >
@@ -308,10 +321,10 @@ const PrintSale = ({ match }) => {
                   </td>
                   <td
                     style={{
-                      fontSize: "20px",
-                      borderWidth: "2px",
-                      borderColor: "black",
-                      borderStyle: "solid"
+                      fontSize: "20px"
+                      // borderWidth: "2px",
+                      // borderColor: "black",
+                      // borderStyle: "solid"
                     }}
                     className="col-2 text-right"
                   >
@@ -319,10 +332,10 @@ const PrintSale = ({ match }) => {
                   </td>
                   <td
                     style={{
-                      fontSize: "20px",
-                      borderWidth: "2px",
-                      borderColor: "black",
-                      borderStyle: "solid"
+                      fontSize: "20px"
+                      // borderWidth: "2px",
+                      // borderColor: "black",
+                      // borderStyle: "solid"
                     }}
                     className="col-2 text-right"
                   >
@@ -343,11 +356,11 @@ const PrintSale = ({ match }) => {
               </td>
               <td
                 style={{
-                  fontSize: "20px",
-                  borderWidth: "2px",
-                  borderColor: "black",
-                  borderStyle: "solid",
-                  borderCollapse: "separate"
+                  fontSize: "20px"
+                  // borderWidth: "2px",
+                  // borderColor: "black",
+                  // borderStyle: "solid",
+                  // borderCollapse: "separate"
                 }}
                 className="text-right"
               >
@@ -364,11 +377,11 @@ const PrintSale = ({ match }) => {
               </td>
               <td
                 style={{
-                  fontSize: "20px",
-                  borderWidth: "2px",
-                  borderColor: "black",
-                  borderStyle: "solid",
-                  borderCollapse: "separate"
+                  fontSize: "20px"
+                  // borderWidth: "2px",
+                  // borderColor: "black",
+                  // borderStyle: "solid",
+                  // borderCollapse: "separate"
                 }}
                 className="text-right"
               >
@@ -385,11 +398,11 @@ const PrintSale = ({ match }) => {
               </td>
               <td
                 style={{
-                  fontSize: "20px",
-                  borderWidth: "2px",
-                  borderColor: "black",
-                  borderStyle: "solid",
-                  borderCollapse: "separate"
+                  fontSize: "20px"
+                  // borderWidth: "2px",
+                  // borderColor: "black",
+                  // borderStyle: "solid",
+                  // borderCollapse: "separate"
                 }}
                 className="text-right"
               >
@@ -406,11 +419,11 @@ const PrintSale = ({ match }) => {
               </td>
               <td
                 style={{
-                  fontSize: "20px",
-                  borderWidth: "2px",
-                  borderColor: "black",
-                  borderStyle: "solid",
-                  borderCollapse: "separate"
+                  fontSize: "20px"
+                  // borderWidth: "2px",
+                  // borderColor: "black",
+                  // borderStyle: "solid",
+                  // borderCollapse: "separate"
                 }}
                 className="text-right"
               >
@@ -427,11 +440,11 @@ const PrintSale = ({ match }) => {
               </td>
               <td
                 style={{
-                  fontSize: "20px",
-                  borderWidth: "2px",
-                  borderColor: "black",
-                  borderStyle: "solid",
-                  borderCollapse: "separate"
+                  fontSize: "20px"
+                  // borderWidth: "2px",
+                  // borderColor: "black",
+                  // borderStyle: "solid",
+                  // borderCollapse: "separate"
                 }}
                 className="text-right"
               >
