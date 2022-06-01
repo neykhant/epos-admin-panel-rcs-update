@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { Alert, Button, Col, Container, Row } from "reactstrap";
 import { getDate } from "utils/convertToDate";
 // import logo from "assets/img/brand/clothing.jpg";
-import logo from "assets/img/brand/h5.jpg";
+import logo from "assets/img/brand/h5color.jpg";
 
 const PrintSale = ({ match }) => {
   const componentRef = useRef();
@@ -172,19 +172,21 @@ const PrintSale = ({ match }) => {
 
         <table
           className="mt-3 table table-bordered"
-          // style={{
-          //   borderWidth: "2px",
-          //   borderColor: "black",
-          //   borderStyle: "solid"
-          // }}
+          style={{
+            // borderWidth: "2px",
+            // borderColor: "black",
+            // borderStyle: "solid"
+            borderTop: "2px solid #526296",
+            // borderBottom: "2px solid #526296"
+          }}
         >
           <thead
             style={{
               // borderWidth: "2px",
               // borderColor: "black",
               // borderStyle: "solid"
-              borderTop: "2px solid black",
-              borderBottom: "2px solid black"
+              borderTop: "2px solid #526296",
+              borderBottom: "2px solid #526296"
             }}
           >
             <tr
@@ -202,7 +204,7 @@ const PrintSale = ({ match }) => {
                   // borderLeft: "2px solid black",
                   // borderRight: "2px solid black"
                   // borderTop: "1.2px solid black",
-                  borderBottom: "2px solid black"
+                  borderBottom: "2px solid #526296"
                 }}
               >
                 စဥ်
@@ -218,7 +220,7 @@ const PrintSale = ({ match }) => {
                   // borderBottom: "2px solid black"
                   // borderLeft: "2px solid black",
                   // borderRight: "2px solid black"
-                  borderBottom: "2px solid black"
+                  borderBottom: "2px solid #526296"
                 }}
                 className="col-4"
               >
@@ -272,8 +274,8 @@ const PrintSale = ({ match }) => {
               // borderWidth: "2px",
               // borderColor: "black",
               // borderStyle: "solid"
-              borderTop: "2px solid black",
-              borderBottom: "2px solid black"
+              borderTop: "2px solid #526296",
+              borderBottom: "2px solid #526296"
             }}
           >
             {sale?.single_sales?.map((sale, index) => {
