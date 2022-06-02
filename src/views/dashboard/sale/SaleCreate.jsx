@@ -30,6 +30,7 @@ const SaleCreate = ({ match }) => {
   const [discount, setDiscount] = useState(0);
   const [paid, setPaid] = useState(0);
   const [customer, setCustomer] = useState("-");
+  const [customerData, setCustomerData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const [manual, setManual] = useState(true);
@@ -162,16 +163,38 @@ const SaleCreate = ({ match }) => {
   };
 
   const handleCustomer = (customer) => {
+    // console.log("c", customer);
     if (customer === "") {
       setCustomer("-");
     } else {
       setCustomer(customer);
+      if (customer) {
+        const result = customers.find((c) => c.name === customer);
+        setCustomerData(result);
+      }
     }
   };
+
+  // console.log(customers);
+  // console.log("result", customerData);
 
   const handleSaleBarcode = () => {
     setManual(!manual);
   };
+
+  // const onChange = (data) => {
+  //   console.log(data);
+  //   // if (value === undefined) {
+  //   //   setBuyMerchant(null);
+  //   // } else {
+  //   //   const filterBuyMerchant = merchant.merchants.find(
+  //   //     (mer) => mer.id === value
+  //   //   );
+  //   //   setBuyMerchant(filterBuyMerchant);
+  //   // }
+  // };
+
+  // console.log("customer", customers);
 
   if (categoryLoading || stockLoading || customerLoading || shopLoading)
     return (
@@ -229,6 +252,7 @@ const SaleCreate = ({ match }) => {
     if (items.length > 0) {
       const savedData = {
         customer_name: customer,
+        customer_id: customerData.id,
         purchase_total: purchaseTotal,
         sale_record_total: total,
         extra_charges: 0,
@@ -238,6 +262,8 @@ const SaleCreate = ({ match }) => {
         shop_id: Number(shopid),
         single_sales: items
       };
+
+      console.log(savedData);
 
       setLoading((prev) => !prev);
       try {
@@ -573,7 +599,7 @@ const SaleCreate = ({ match }) => {
               </div>
             </Col>
             <Col xs={12} sm={4}>
-              <div className="custom-control-inline mt-1">
+              {/* <div className="custom-control-inline mt-1">
                 <Input
                   id="customer"
                   placeholder="Enter customer name"
@@ -581,6 +607,13 @@ const SaleCreate = ({ match }) => {
                   value={customer}
                   onChange={(event) => setCustomer(event.target.value)}
                 />
+              </div> */}
+              <div className="custom-control-inline mt-1">
+                <label htmlFor="categories" className="mr-1 mt-1">
+                  {customerData != null
+                    ? customerData.name + "--" + customerData.phone_no
+                    : customer}
+                </label>
               </div>
             </Col>
           </Row>

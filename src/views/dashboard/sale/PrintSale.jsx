@@ -6,6 +6,7 @@ import { Alert, Button, Col, Container, Row } from "reactstrap";
 import { getDate } from "utils/convertToDate";
 // import logo from "assets/img/brand/clothing.jpg";
 import logo from "assets/img/brand/h5color.jpg";
+import Sales from "./Sales";
 
 const PrintSale = ({ match }) => {
   const componentRef = useRef();
@@ -31,8 +32,6 @@ const PrintSale = ({ match }) => {
         {error.message}
       </Alert>
     );
-
-  // console.log(sale);
 
   return (
     <Container fluid>
@@ -159,7 +158,9 @@ const PrintSale = ({ match }) => {
             <p style={{ fontSize: "23px" }}>ဖုန်း</p>
           </Col>
           <Col className="col-2">
-            <p style={{ fontSize: "23px" }}>{sale.pay_way}</p>
+            <p style={{ fontSize: "23px" }}>
+              {sale.customer ? sale.customer.phone_no : "-"}
+            </p>
           </Col>
           <Col className="col-3"></Col>
           <Col className="col-3">
