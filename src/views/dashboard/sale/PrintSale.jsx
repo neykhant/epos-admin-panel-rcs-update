@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { Alert, Button, Col, Container, Row } from "reactstrap";
 import { getDate } from "utils/convertToDate";
 // import logo from "assets/img/brand/clothing.jpg";
-import logo from "assets/img/brand/h5color.jpg";
+import logo from "assets/img/brand/H3new.jpg";
 import Sales from "./Sales";
 
 const PrintSale = ({ match }) => {
@@ -33,6 +33,7 @@ const PrintSale = ({ match }) => {
       </Alert>
     );
 
+  // console.log(sale);
   return (
     <Container fluid>
       <Button className="mt-3" size="sm" color="info" onClick={handlePrint}>
@@ -48,8 +49,8 @@ const PrintSale = ({ match }) => {
           <Col className="col-1">
             <img
               src={logo}
-              width={200}
-              height={200}
+              width={220}
+              height={220}
               alt="logo"
               style={
                 {
@@ -143,7 +144,9 @@ const PrintSale = ({ match }) => {
             </span>
           </Col>
           <Col className="col-2">
-            <p style={{ fontSize: "23px" }}>{sale.customer_name}</p>
+            <p style={{ fontSize: "23px" }}>
+              {sale.customer?.name ? sale.customer?.name : "-"}
+            </p>
           </Col>
           <Col className="col-3"></Col>
           <Col className="col-3">
@@ -213,14 +216,6 @@ const PrintSale = ({ match }) => {
               <th
                 style={{
                   fontSize: "23px",
-                  // borderWidth: "2px",
-                  // borderColor: "black",
-                  // borderStyle: "solid",
-                  // borderCollapse: "separate"
-                  // borderTop: "2px solid black",
-                  // borderBottom: "2px solid black"
-                  // borderLeft: "2px solid black",
-                  // borderRight: "2px solid black"
                   borderBottom: "2px solid #526296"
                 }}
                 className="col-4"

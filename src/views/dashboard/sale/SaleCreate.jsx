@@ -167,7 +167,7 @@ const SaleCreate = ({ match }) => {
     if (customer === "") {
       setCustomer("-");
     } else {
-      setCustomer(customer);
+      // setCustomer(customer);
       if (customer) {
         const result = customers.find((c) => c.name === customer);
         setCustomerData(result);
@@ -247,11 +247,10 @@ const SaleCreate = ({ match }) => {
       : 0;
 
   const discountAmount = total * (Number(discount) / 100);
-
   const handleSave = async () => {
     if (items.length > 0) {
       const savedData = {
-        customer_name: customer,
+        customer_name: customerData ? customerData.name : "-",
         customer_id: customerData?.id ? customerData?.id : 0,
         purchase_total: purchaseTotal,
         sale_record_total: total,
@@ -589,7 +588,7 @@ const SaleCreate = ({ match }) => {
                   className="form-control-sm"
                   onChange={(event) => handleCustomer(event.target.value)}
                 >
-                  <option value="">Select Customer</option>
+                  <option value="1">Select Customer</option>
                   {customers.map((data) => (
                     <option value={data.name} key={data.id}>
                       {data.name}
