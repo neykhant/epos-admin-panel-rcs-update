@@ -194,7 +194,7 @@ const SaleCreate = ({ match }) => {
   //   // }
   // };
 
-  // console.log("customer", customers);
+  console.log("customer", customerData);
 
   if (categoryLoading || stockLoading || customerLoading || shopLoading)
     return (
@@ -252,7 +252,7 @@ const SaleCreate = ({ match }) => {
     if (items.length > 0) {
       const savedData = {
         customer_name: customer,
-        customer_id: customerData.id,
+        customer_id: customerData?.id ? customerData?.id : 0,
         purchase_total: purchaseTotal,
         sale_record_total: total,
         extra_charges: 0,
@@ -263,7 +263,7 @@ const SaleCreate = ({ match }) => {
         single_sales: items
       };
 
-      console.log(savedData);
+      // console.log(savedData);
 
       setLoading((prev) => !prev);
       try {
