@@ -194,7 +194,7 @@ const SaleCreate = ({ match }) => {
   //   // }
   // };
 
-  console.log("customer", customerData);
+  // console.log("customer", customerData);
 
   if (categoryLoading || stockLoading || customerLoading || shopLoading)
     return (
