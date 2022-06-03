@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { Alert, Button, Col, Container, Row } from "reactstrap";
 import { getDate } from "utils/convertToDate";
 // import logo from "assets/img/brand/clothing.jpg";
-import logo from "assets/img/brand/H3new.jpg";
+import logo from "assets/img/brand/H3Logo.jpg";
 import Sales from "./Sales";
 
 const PrintSale = ({ match }) => {
@@ -47,19 +47,7 @@ const PrintSale = ({ match }) => {
           }}
         >
           <Col className="col-1">
-            <img
-              src={logo}
-              width={220}
-              height={220}
-              alt="logo"
-              style={
-                {
-                  // borderRadius: "80px",
-                  // textAlign: "center",
-                  // alignItems: "center"
-                }
-              }
-            />
+            <img src={logo} width={200} height={190} alt="logo" />
           </Col>
           <Col className="col-1"></Col>
           <Col className="col-10">
@@ -79,7 +67,7 @@ const PrintSale = ({ match }) => {
               style={{
                 fontWeight: "bold",
                 fontSize: "28px",
-                marginBottom: "1px",
+                marginBottom: "5px",
                 marginLeft: "50px"
               }}
             >
@@ -89,7 +77,7 @@ const PrintSale = ({ match }) => {
               style={{
                 fontWeight: "bold",
                 fontSize: "26px",
-                marginBottom: "1px",
+                marginBottom: "3px",
                 marginLeft: "50px"
               }}
             >
@@ -136,78 +124,61 @@ const PrintSale = ({ match }) => {
           <Col className="col-1">
             <span
               style={{
-                fontSize: "23px"
+                fontSize: "22px"
                 // marginBottom: "5px"
               }}
             >
-              အမည်:
+              အမည်
             </span>
           </Col>
           <Col className="col-2">
-            <p style={{ fontSize: "23px" }}>
+            <p style={{ fontSize: "22px" }}>
               {sale.customer?.name ? sale.customer?.name : "-"}
             </p>
           </Col>
-          <Col className="col-3"></Col>
+          <Col className="col-2"></Col>
           <Col className="col-3">
-            <p style={{ fontSize: "23px" }}>ဘောင်ချာနံပါတ်:</p>
+            <p style={{ fontSize: "22px" }}>ဘောင်ချာနံပါတ်</p>
           </Col>
-          <Col className="col-2">
-            <p style={{ fontSize: "23px" }}>{sale.id}</p>
+          <Col className="col-3">
+            <p style={{ fontSize: "22px" }}>{sale.id}</p>
           </Col>
         </Row>
         <Row>
           <Col className="col-1">
-            <p style={{ fontSize: "23px" }}>ဖုန်း</p>
+            <p style={{ fontSize: "22px" }}>ဖုန်း</p>
           </Col>
           <Col className="col-2">
-            <p style={{ fontSize: "23px" }}>
+            <p style={{ fontSize: "22px" }}>
               {sale.customer ? sale.customer.phone_no : "-"}
             </p>
           </Col>
-          <Col className="col-3"></Col>
+          <Col className="col-2"></Col>
           <Col className="col-3">
-            <p style={{ fontSize: "23px" }}>ရက်စွဲး</p>
+            <p style={{ fontSize: "23px" }}>ရက်စွဲ</p>
           </Col>
           <Col className="col-3">
-            <p style={{ fontSize: "22px" }}>{getDate(sale.created_at)}</p>
+            <p style={{ fontSize: "21px" }}>{getDate(sale.created_at)}</p>
           </Col>
         </Row>
 
         <table
           className="mt-3 table table-bordered"
           style={{
-            // borderWidth: "2px",
-            // borderColor: "black",
-            // borderStyle: "solid"
             borderTop: "2px solid #526296"
             // borderBottom: "2px solid #526296"
           }}
         >
           <thead
             style={{
-              // borderWidth: "2px",
-              // borderColor: "black",
-              // borderStyle: "solid"
               borderTop: "2px solid #526296",
               borderBottom: "2px solid #526296"
             }}
           >
-            <tr
-            // style={{
-            //   borderWidth: "2px",
-            //   borderColor: "black",
-            //   borderStyle: "solid"
-            // }}
-            >
+            <tr>
               <th
                 style={{
                   fontSize: "23px",
-                  // borderTop: "2px solid black",
-                  // borderBottom: "2px solid black"
-                  // borderLeft: "2px solid black",
-                  // borderRight: "2px solid black"
-                  // borderTop: "1.2px solid black",
                   borderBottom: "2px solid #526296"
                 }}
               >
@@ -226,12 +197,6 @@ const PrintSale = ({ match }) => {
               <th
                 style={{
                   fontSize: "23px"
-                  // borderWidth: "2px",
-                  // borderColor: "black",
-                  // borderStyle: "solid",
-                  // borderCollapse: "collapse"
-                  // borderTop: "2px solid black",
-                  // borderBottom: "2px solid black"
                 }}
                 className="col-2 text-right"
               >
@@ -240,11 +205,6 @@ const PrintSale = ({ match }) => {
               <th
                 style={{
                   fontSize: "23px"
-                  // borderWidth: "2px",
-                  // borderColor: "black",
-                  // borderStyle: "solid"
-                  // borderTop: "2px solid black",
-                  // borderBottom: "2px solid black"
                 }}
                 className="col-2 text-right"
               >
@@ -253,11 +213,6 @@ const PrintSale = ({ match }) => {
               <th
                 style={{
                   fontSize: "23px"
-                  // borderWidth: "2px",
-                  // borderColor: "black",
-                  // borderStyle: "solid"
-                  // borderTop: "2px solid black",
-                  // borderBottom: "2px solid black"
                 }}
                 className="col-2 text-right"
               >
@@ -267,9 +222,6 @@ const PrintSale = ({ match }) => {
           </thead>
           <tbody
             style={{
-              // borderWidth: "2px",
-              // borderColor: "black",
-              // borderStyle: "solid"
               borderTop: "2px solid #526296",
               borderBottom: "2px solid #526296"
             }}
@@ -280,17 +232,11 @@ const PrintSale = ({ match }) => {
                   key={index}
                   style={{
                     fontSize: "23px"
-                    // borderWidth: "2px",
-                    // borderColor: "black",
-                    // borderStyle: "solid"
                   }}
                 >
                   <td
                     style={{
                       fontSize: "23px"
-                      // borderWidth: "2px",
-                      // borderColor: "black",
-                      // borderStyle: "solid"
                     }}
                   >
                     {index + 1}
@@ -298,9 +244,6 @@ const PrintSale = ({ match }) => {
                   <td
                     style={{
                       fontSize: "23px"
-                      // borderWidth: "2px",
-                      // borderColor: "black",
-                      // borderStyle: "solid"
                     }}
                     className="col-4"
                   >
@@ -309,9 +252,6 @@ const PrintSale = ({ match }) => {
                   <td
                     style={{
                       fontSize: "23px"
-                      // borderWidth: "2px",
-                      // borderColor: "black",
-                      // borderStyle: "solid"
                     }}
                     className="col-2 text-right"
                   >
@@ -320,9 +260,6 @@ const PrintSale = ({ match }) => {
                   <td
                     style={{
                       fontSize: "23px"
-                      // borderWidth: "2px",
-                      // borderColor: "black",
-                      // borderStyle: "solid"
                     }}
                     className="col-2 text-right"
                   >
@@ -331,9 +268,6 @@ const PrintSale = ({ match }) => {
                   <td
                     style={{
                       fontSize: "23px"
-                      // borderWidth: "2px",
-                      // borderColor: "black",
-                      // borderStyle: "solid"
                     }}
                     className="col-2 text-right"
                   >
@@ -355,10 +289,6 @@ const PrintSale = ({ match }) => {
               <td
                 style={{
                   fontSize: "23px"
-                  // borderWidth: "2px",
-                  // borderColor: "black",
-                  // borderStyle: "solid",
-                  // borderCollapse: "separate"
                 }}
                 className="text-right"
               >
@@ -376,10 +306,6 @@ const PrintSale = ({ match }) => {
               <td
                 style={{
                   fontSize: "23px"
-                  // borderWidth: "2px",
-                  // borderColor: "black",
-                  // borderStyle: "solid",
-                  // borderCollapse: "separate"
                 }}
                 className="text-right"
               >
@@ -397,10 +323,6 @@ const PrintSale = ({ match }) => {
               <td
                 style={{
                   fontSize: "23px"
-                  // borderWidth: "2px",
-                  // borderColor: "black",
-                  // borderStyle: "solid",
-                  // borderCollapse: "separate"
                 }}
                 className="text-right"
               >
@@ -418,10 +340,6 @@ const PrintSale = ({ match }) => {
               <td
                 style={{
                   fontSize: "23px"
-                  // borderWidth: "2px",
-                  // borderColor: "black",
-                  // borderStyle: "solid",
-                  // borderCollapse: "separate"
                 }}
                 className="text-right"
               >
@@ -439,10 +357,6 @@ const PrintSale = ({ match }) => {
               <td
                 style={{
                   fontSize: "23px"
-                  // borderWidth: "2px",
-                  // borderColor: "black",
-                  // borderStyle: "solid",
-                  // borderCollapse: "separate"
                 }}
                 className="text-right"
               >
