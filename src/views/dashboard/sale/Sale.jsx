@@ -28,7 +28,7 @@ const Sale = ({ match }) => {
         (singleSale, index) => {
           return {
             ...singleSale,
-            key: index + 1,
+            key: index + 1
           };
         }
       );
@@ -38,7 +38,7 @@ const Sale = ({ match }) => {
       const transformCredits = result.credits.map((credit, index) => {
         return {
           ...credit,
-          key: index + 1,
+          key: index + 1
         };
       });
 
@@ -73,24 +73,24 @@ const Sale = ({ match }) => {
           columns={[
             {
               dataField: "key",
-              text: "#",
+              text: "#"
             },
             {
               dataField: "stock.item.name",
-              text: "Item Name",
+              text: "Item Name"
             },
             {
               dataField: "price",
-              text: "Price",
+              text: "Price"
             },
             {
               dataField: "quantity",
-              text: "Quantity",
+              text: "Quantity"
             },
             {
               dataField: "subtotal",
-              text: "Subtotal",
-            },
+              text: "Subtotal"
+            }
           ]}
           search
         >
@@ -98,11 +98,14 @@ const Sale = ({ match }) => {
             <div className="py-4 table-responsive">
               <Container fluid>
                 <Row>
-                  <Col xs={12} sm={6}>
+                  <Col xs={12} sm={4}>
                     <h1>Sale Detail</h1>
                   </Col>
                   <Col xs={12} sm={2}>
                     <h3>{sale.customer_name}</h3>
+                  </Col>
+                  <Col xs={12} sm={2}>
+                    <h3>{sale.customer.phone_no}</h3>
                   </Col>
                   <Col xs={12} sm={4}>
                     <h3>{getReadableDateDisplay(sale.created_at)}</h3>
@@ -120,7 +123,8 @@ const Sale = ({ match }) => {
           )}
         </ToolkitProvider>
         <Row className="ml-7">
-          <Col xs={9} sm={9}>
+          <Col xs={9} sm={7}></Col>
+          <Col xs={9} sm={2}>
             <p>Sale Total</p>
           </Col>
           <Col xs={1} sm={1}>
@@ -129,7 +133,8 @@ const Sale = ({ match }) => {
           <Col xs={2} sm={2}></Col>
         </Row>
         <Row className="ml-7">
-          <Col xs={9} sm={9}>
+          <Col xs={9} sm={7}></Col>
+          <Col xs={9} sm={2}>
             <p>Discount({sale.discount})%</p>
           </Col>
           <Col xs={1} sm={1}>
@@ -140,7 +145,8 @@ const Sale = ({ match }) => {
           <Col xs={2} sm={2}></Col>
         </Row>
         <Row className="ml-7">
-          <Col xs={9} sm={9}>
+          <Col xs={9} sm={7}></Col>
+          <Col xs={9} sm={2}>
             <p>Grand Total</p>
           </Col>
           <Col xs={1} sm={1}>
@@ -149,7 +155,8 @@ const Sale = ({ match }) => {
           <Col xs={2} sm={2}></Col>
         </Row>
         <Row className="ml-7">
-          <Col xs={9} sm={9}>
+          <Col xs={9} sm={7}></Col>
+          <Col xs={9} sm={2}>
             <p>Paid</p>
           </Col>
           <Col xs={1} sm={1}>
@@ -158,7 +165,8 @@ const Sale = ({ match }) => {
           <Col xs={2} sm={2}></Col>
         </Row>
         <Row className="ml-7">
-          <Col xs={9} sm={9}>
+          <Col xs={9} sm={7}></Col>
+          <Col xs={9} sm={2}>
             <p>Credit</p>
           </Col>
           <Col xs={1} sm={1}>
@@ -172,11 +180,11 @@ const Sale = ({ match }) => {
           columns={[
             {
               dataField: "key",
-              text: "#",
+              text: "#"
             },
             {
               dataField: "amount",
-              text: "Amount",
+              text: "Amount"
             },
             {
               dataField: "created_at",
@@ -184,8 +192,8 @@ const Sale = ({ match }) => {
               sort: true,
               formatter: (cell) => {
                 return getReadableDateDisplay(cell);
-              },
-            },
+              }
+            }
           ]}
           search
         >

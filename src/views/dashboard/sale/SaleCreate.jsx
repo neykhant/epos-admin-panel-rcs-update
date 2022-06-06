@@ -33,7 +33,7 @@ const SaleCreate = ({ match }) => {
   const [customerData, setCustomerData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const [manual, setManual] = useState(true);
+  const [manual, setManual] = useState(false);
   const [dataBarCode, setDataBarCode] = useState(null);
 
   const { shopid } = match.params;
