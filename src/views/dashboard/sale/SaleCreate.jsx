@@ -247,6 +247,7 @@ const SaleCreate = ({ match }) => {
       : 0;
 
   const discountAmount = total * (Number(discount) / 100);
+
   const handleSave = async () => {
     if (items.length > 0) {
       const savedData = {

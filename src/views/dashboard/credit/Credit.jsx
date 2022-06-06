@@ -48,7 +48,7 @@ const Credit = () => {
   const [transformSales, setTransformSales] = React.useState(null);
   const [filterSales, setFilterSales] = React.useState(null);
   const [allCredit, setAllCredit] = React.useState(null);
-  // const [filterStocks, setFilterStocks] = React.useState([]);
+  // const [filterDate, setFilterDate] = React.useState(null);
 
   const history = useHistory();
 
@@ -109,6 +109,18 @@ const Credit = () => {
     }
   };
 
+  const handleSelectMonthlyCredit = (shopID) => {
+    if (shopID === "all") {
+      setFilterSales(transformSales);
+    }
+    if (Number(shopID) === 1) {
+      const filterSalesByShopID = transformSales.filter(
+        (sale) => sale.is_due === true
+      );
+      setFilterSales(filterSalesByShopID);
+    }
+  };
+
   const handleOnChange = async (row) => {
     const credit = document.getElementById(`quantity${row.id}`).value;
 
@@ -137,7 +149,6 @@ const Credit = () => {
       }
     }
   };
-
 
   if (saleLoading || shopLoading)
     return (
@@ -230,6 +241,7 @@ const Credit = () => {
               text: "Created At",
               sort: true,
               formatter: (cell) => {
+                // console.log(getReadableDateDisplay(cell));
                 return getReadableDateDisplay(cell);
               }
             },
@@ -323,7 +335,7 @@ const Credit = () => {
                       </Input>
                     </div>
                   </Col>
-                  <Col xs={12} sm={3}>
+                  <Col xs={12} sm={2}>
                     <div className="custom-control-inline mt-1">
                       <label htmlFor="shops" className="mr-1 mt-1">
                         Credit:
@@ -347,7 +359,30 @@ const Credit = () => {
                       </Input>
                     </div>
                   </Col>
-                  <Col xs={12} sm={3}>
+                  <Col xs={12} sm={2}>
+                    <div className="custom-control-inline mt-1">
+                      <label htmlFor="shops" className="mr-1 mt-1">
+                        Monthly:
+                      </label>
+                      <Input
+                        id="shops"
+                        type="select"
+                        className="form-control-sm"
+                        onChange={(event) =>
+                          handleSelectMonthlyCredit(event.target.value)
+                        }
+                      >
+                        <option value="all">All</option>
+                        <option value="1">Credit</option>
+                        {/* {shops.map((data) => (
+                          <option value={data.id} key={data.id}>
+                            {data.name}
+                          </option>
+                        ))} */}
+                      </Input>
+                    </div>
+                  </Col>
+                  <Col xs={12} sm={2}>
                     <div
                       id="datatable-basic_filter"
                       className="dataTables_filter px-4 pb-1 float-right"
@@ -362,7 +397,7 @@ const Credit = () => {
                       </label>
                     </div>
                   </Col>
-                  <Col xs={12} sm={2}>
+                  <Col xs={12} sm={1}>
                     <ExportButton {...props.csvProps} />
                   </Col>
                 </Row>
