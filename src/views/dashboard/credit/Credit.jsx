@@ -150,6 +150,14 @@ const Credit = () => {
     }
   };
 
+  // console.log(transformSales);
+  // const result_date = transformSales.map((t) => {
+  //   // var date = new Date(t.created_at_monthly);
+
+  //   var date = new Date(t.created_at_monthly.split('/').reverse().join('-')).toISOString().split('T')[0]
+  // });
+  // console.log(result_date);
+
   if (saleLoading || shopLoading)
     return (
       <Alert color="secondary">
@@ -309,13 +317,15 @@ const Credit = () => {
             <div className="py-4 table-responsive">
               <Container fluid>
                 <Row>
-                  <Col xs={12} sm={2}>
-                    {/* <h1>Sales</h1> */}
-                    <h1>Credit</h1>
+                  <Col xs={12} sm={1}>
+                    <div className="custom-control-inline mt-1">
+                      {/* <h1>Sales</h1> */}
+                      <h1>Credit</h1>
+                    </div>
                   </Col>
                   <Col xs={12} sm={2}>
                     <div className="custom-control-inline mt-1">
-                      <label htmlFor="shops" className="mr-1 mt-1">
+                      <label htmlFor="shops" className=" mt-1">
                         Shop:
                       </label>
                       <Input
@@ -337,7 +347,7 @@ const Credit = () => {
                   </Col>
                   <Col xs={12} sm={2}>
                     <div className="custom-control-inline mt-1">
-                      <label htmlFor="shops" className="mr-1 mt-1">
+                      <label htmlFor="shops" className=" mt-1">
                         Credit:
                       </label>
                       <Input
@@ -382,20 +392,20 @@ const Credit = () => {
                       </Input>
                     </div>
                   </Col>
-                  <Col xs={12} sm={2}>
-                    <div
+                  <Col xs={12} sm={4}>
+                    {/* <div
                       id="datatable-basic_filter"
                       className="dataTables_filter px-4 pb-1 float-right"
-                    >
-                      <label>
-                        Search:
-                        <SearchBar
-                          className="form-control-sm"
-                          placeholder=""
-                          {...props.searchProps}
-                        />
-                      </label>
-                    </div>
+                    > */}
+                    <label>
+                      Search:
+                      <SearchBar
+                        className="form-control-sm"
+                        placeholder=""
+                        {...props.searchProps}
+                      />
+                    </label>
+                    {/* </div> */}
                   </Col>
                   <Col xs={12} sm={1}>
                     <ExportButton {...props.csvProps} />
