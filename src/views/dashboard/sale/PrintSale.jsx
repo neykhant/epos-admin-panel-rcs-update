@@ -295,7 +295,8 @@ const PrintSale = ({ match }) => {
                 {sale.whole_total}
               </td>
             </tr>
-            <tr>
+            {/* for h3 */}
+            {/* <tr>
               <td
                 style={{ fontSize: "23px" }}
                 colSpan="4"
@@ -362,7 +363,7 @@ const PrintSale = ({ match }) => {
               >
                 {sale.credit}
               </td>
-            </tr>
+            </tr> */}
           </tfoot>
         </table>
 
