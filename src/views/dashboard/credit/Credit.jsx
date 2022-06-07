@@ -109,15 +109,17 @@ const Credit = () => {
     }
   };
 
+  const [montlyCredit, setMontlyCredit] = React.useState(null);
+
   const handleSelectMonthlyCredit = (shopID) => {
     if (shopID === "all") {
       setFilterSales(transformSales);
     }
-    if (Number(shopID) === 1) {
-      const filterSalesByShopID = transformSales.filter(
+    if (Number(shopID) === 1 && filterSales.credit !== 0) {
+      const filterSalesByShopID = filterSales.filter(
         (sale) => sale.is_due === true
       );
-      setFilterSales(filterSalesByShopID);
+      setMontlyCredit(filterSalesByShopID);
     }
   };
 
@@ -150,7 +152,6 @@ const Credit = () => {
     }
   };
 
-  // console.log(transformSales);
   // const result_date = transformSales.map((t) => {
   //   // var date = new Date(t.created_at_monthly);
 
@@ -185,7 +186,7 @@ const Credit = () => {
     <Container className="mt-6" fluid>
       <Card>
         <ToolkitProvider
-          data={filterSales}
+          data={montlyCredit ? montlyCredit : filterSales}
           keyField="id"
           exportCSV
           columns={[
