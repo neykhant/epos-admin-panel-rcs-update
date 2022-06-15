@@ -16,7 +16,13 @@
 */
 import React from "react";
 // react library for routing
-import { useLocation, Route, Switch, Redirect } from "react-router-dom";
+import {
+  useLocation,
+  Route,
+  Switch,
+  Redirect,
+  Navigate
+} from "react-router-dom";
 
 import routes from "routes.js";
 
@@ -70,7 +76,7 @@ function Auth() {
       <div className="main-content" ref={mainContentRef}>
         <Switch>
           {getRoutes(routes)}
-          <Redirect from="*" to="/auth/login" />
+          <Navigate from="*" to="/auth/login" />
         </Switch>
       </div>
     </>

@@ -1,4 +1,4 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Navigate } from "react-router-dom";
 import { getToken } from "utils/token";
 
 const AuthRoute = ({ component: Component, ...rest }) => {
@@ -8,7 +8,7 @@ const AuthRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        !TOKEN ? <Component {...props} /> : <Redirect to="/admin/dashboard" />
+        !TOKEN ? <Component {...props} /> : <Navigate to="/admin/dashboard" />
       }
     />
   );

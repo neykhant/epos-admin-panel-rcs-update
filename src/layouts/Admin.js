@@ -16,7 +16,7 @@
 */
 import React from "react";
 // react library for routing
-import { useLocation, Route, Switch, Redirect } from "react-router-dom";
+import { useLocation, Route, Switch, Redirect, Navigate } from "react-router-dom";
 // core components
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
@@ -105,7 +105,7 @@ function Admin() {
         />
         <Switch>
           {getRoutes(routes)}
-          <Redirect from="*" to="/admin/dashboard" />
+          <Navigate from="*" to="/admin/dashboard" />
         </Switch>
       </div>
       {sidenavOpen ? (

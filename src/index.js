@@ -17,7 +17,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 // react library for routing
-import { BrowserRouter, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Redirect, Navigate } from "react-router-dom";
 import { NotificationContainer } from "react-notifications";
 
 // plugins styles from node_modules
@@ -54,7 +54,7 @@ ReactDOM.render(
       <Switch>
         <PrivateRoute path="/admin" component={AdminLayout} />
         <AuthRoute path="/auth" component={AuthLayout} />
-        <Redirect from="*" to="/auth/login" />
+        <Navigate from="*" to="/auth/login" />
       </Switch>
     </BrowserRouter>
     <NotificationContainer />
