@@ -20,8 +20,7 @@ import {
   useLocation,
   Route,
   Switch,
-  Redirect,
-  Navigate
+  Redirect
 } from "react-router-dom";
 
 import routes from "routes.js";
@@ -76,8 +75,8 @@ function Auth() {
       <div className="main-content" ref={mainContentRef}>
         <Switch>
           {getRoutes(routes)}
-          <Navigate from="*" to="/auth/login" />
-        </Switch>
+          <Redirect from="*" to="/auth/login" />
+          </Switch>
       </div>
     </>
   );

@@ -63,6 +63,7 @@ const Stocks = () => {
 
   React.useEffect(() => {
     const result = stocks.map((stock, index) => {
+      console.log(stock);
       return {
         ...stock,
         key: index + 1
@@ -94,7 +95,7 @@ const Stocks = () => {
         item_id: row.item.id,
         quantity: Number(stock)
       });
-      // console.log(response);
+      console.log("response", response);
       if (response.status === "success") {
         NotificationManager.success("Stock has been updated successfully!");
         document.getElementById(`quantity${row.id}`).value = "";

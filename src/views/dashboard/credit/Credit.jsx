@@ -122,7 +122,6 @@ const Credit = () => {
       setMontlyCredit(filterSalesByShopID);
     }
   };
-
   const handleOnChange = async (row) => {
     const credit = document.getElementById(`quantity${row.id}`).value;
 
@@ -181,6 +180,8 @@ const Credit = () => {
         {shopError.message}
       </Alert>
     );
+
+  console.log(transformSales);
 
   return (
     <Container className="mt-6" fluid>

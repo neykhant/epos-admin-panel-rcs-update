@@ -15,7 +15,7 @@ const pagination = paginationFactory({
   page: 1,
   alwaysShowAllBtns: true,
   showTotal: true,
-  withFirstAndLast: false,
+  withFirstAndLast: true,
   sizePerPageRenderer: ({ options, currSizePerPage, onSizePerPageChange }) => (
     <div className="dataTables_length" id="datatable-basic_length">
       <label>
@@ -36,7 +36,7 @@ const pagination = paginationFactory({
         entries.
       </label>
     </div>
-  ),
+  )
 });
 
 const { SearchBar } = Search;
@@ -52,7 +52,7 @@ const Items = () => {
     const result = items.map((item, index) => {
       return {
         ...item,
-        key: index + 1,
+        key: index + 1
       };
     });
 
@@ -85,37 +85,37 @@ const Items = () => {
             {
               dataField: "key",
               text: "#",
-              sort: true,
+              sort: true
             },
             {
               dataField: "id",
               text: "ID",
-              sort: true,
+              sort: true
             },
             {
               dataField: "code",
               text: "Code",
-              sort: true,
+              sort: true
             },
             {
               dataField: "name",
               text: "Name",
-              sort: true,
+              sort: true
             },
             {
               dataField: "category.name",
               text: "Category",
-              sort: true,
+              sort: true
             },
             {
               dataField: "buy_price",
               text: "Purchase Price",
-              sort: true,
+              sort: true
             },
             {
               dataField: "sale_price",
               text: "Sale Price",
-              sort: true,
+              sort: true
             },
             {
               dataField: "created_at",
@@ -123,8 +123,8 @@ const Items = () => {
               sort: true,
               formatter: (cell) => {
                 return getReadableDateDisplay(cell);
-              },
-            },
+              }
+            }
           ]}
           search
         >
